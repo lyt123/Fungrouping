@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>act detail</title>
+    <script type="text/javascript" src="../package/jquery-2.2.4.js"></script>
+    <script type="text/javascript" src="../package/boostrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../package/boostrap/css/bootstrap.min.css" >
+</head>
+<body>
+
+<script type="text/javascript" src="../js/common/qc.js"></script>
+<script>
+    (function($) {
+        data = {"password" : "111111", "phone" : "15875064665"};
+        console.log(base_url);
+        fg.post(base_url + "Home/user/login", 'POST', data);
+    })(jQuery);
+</script>
+</body>
+</html>

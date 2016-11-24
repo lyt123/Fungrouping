@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+		<link rel="styleSheet" href="bootstrap/bootstrap.min.css"/>
+		<link rel="styleSheet" href="bootstrap/bootstrap-theme.min.css"/>
+		<link rel="styleSheet" href="css/resest.css"/>
+		<style>
+			body{
+				background: gray;
+				font-family: "微软雅黑";
+				color: white;
+				border: 5px solid black;
+			}
+			#title{
+				text-align: center;
+			}
+			#participant,#intro,#address,#phone,#picture,#group{
+				width: 290px;
+				margin: 20px auto;
+			}
+			.participantDiv{
+				display: inline-block;
+				text-align: center;
+				margin-left: 6px;
+				width: 56px;
+				overflow: hidden;
+			}
+			.participantImg{
+				height: 40px;
+				width: 40px;
+				border-radius: 50%;
+				overflow: hidden;
+			}
+			#picture{
+				margin-bottom: 50px;
+			}
+			.pictureImg{
+				width: 290px;
+				margin-top:5px;
+			}
+			#form{
+				height: 50px;
+				width: 100%;
+				background: white;
+				position: fixed;
+				bottom: 0;
+				text-align: center;
+			}
+			#form button{
+				margin-top:10px;
+			}
+		</style>
+		<script type="text/javascript" src="bootstrap/jquery-1.12.2.min.js"></script>
+		<script type="text/javascript" src="bootstrap/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/myTool.js"></script>
+		<script type="text/javascript" src="js/urlModel.js"></script>
+		<script type="text/javascript" src="js/cookies.js"></script>
+	</head>
+	<body>
+		<div id="thebody">
+			<div id="title">
+				<!--放置图片，标题，时间-->
+			</div>
+			<div id="phone">
+				<!--活动发起人的电话-->
+			</div>
+			<div id="group">
+				<!--活动QQ群号-->
+			</div>
+			<div id="address">
+				<!--放置活动地点-->
+			</div>
+			<div id="participant">
+				<!--放置参与的人群-->
+			</div>
+			<div id="intro">
+				<!--放置活动内容-->
+			</div>
+			<div id="picture">
+				<!--放置图片信息-->
+			</div>
+			<div id="form">
+				<button id="btn" class="btn btn-success">申请参与</button>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var url_act=window.location.search;
+			var team_id=url_act.substring(9);
+			request(base_url_teamDetail,"POST",{'id':team_id},function(data){
+				console.log(data);
+				var res=data.response;
+				/*title部分*/
+				$("#title").append("<p style='font-size:20px;'>"+res.title+"</p><img style='height:100px;width:100px;border-radius:50%;overflow:hidden ' src="+base_url+"/"+res.cover+"><p>"+getTime(res.starttime)+"</p>");
+				/*participant部分*/
+				for(var i=0;i<res.join.length;i++){
+					$("#participant").append("<div class='participantDiv'><img class='participantImg' src='"+base_url+"/"+res.join[i].head_path+"'><p>"+res.join[i].username+"</p></div>")
+				}
+				$("#participant").append("<div class='participantDiv' style='font-size:12px;'>("+res.num_join+"/"+res.num_max+")</div>");
+				/*intro*/
+				$("#intro").append("<p>活动介绍:"+res.intro+"</p>");
+				/*address*/
+				$("#address").append("<p>活动地点:"+res.address+"</p>");
+				/*phone*/
+				$("#phone").append("<p>联系电话:"+res.phone+"</p>");
+				/*group*/
+				$("#group").append("<p>QQ群号:"+res.group_num+"</p>");
+				/*picture*/
+				for(var i=0;i<res.picture.length;i++){
+					$("#picture").append("<img class='pictureImg' src='"+base_url+"/"+res.picture[i].picture+"'>");
+				}
+				/*button*/
+				$("#btn").click(function(){
+					setCookie("team_id",team_id);
+					window.location.href="form.html";
+				})
+			})
+		</script>
+	</body>
+</html>

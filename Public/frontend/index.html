@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+		<link rel="styleSheet" href="css/resest.css"/>
+		<link rel="styleSheet" href="bootstrap/bootstrap.min.css"/>
+		<link rel="styleSheet" href="bootstrap/bootstrap-theme.min.css"/>
+		<link rel="styleSheet" href="css/phone.css"/>
+		<script type="text/javascript" src="bootstrap/jquery-1.12.2.min.js"></script>
+		<script type="text/javascript" src="bootstrap/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/myTool.js"></script>
+		<script type="text/javascript" src="js/urlModel.js"></script>
+	</head>
+	<body>
+		<p id="ids" style="display:none;"></p>
+		<p id="codes" style="display:none;"></p>
+		<p id="nameformat" style="display:none;"></p>
+		<div id="thebody">
+			<div id="message">
+
+				<div id="message_top">
+					<div id="myimage"></div>
+					<p id="createuser" class="messFont"></p>
+					<p id="times" class="messFont"></p>
+				</div>
+
+				<div id="message_bottom" class="clear">
+					<div class="messDiv" id="QR" data-toggle="modal" data-target=".bs-example-modal-sm">
+						<img src="image/二维码.png">
+						<p class="messFont">生成二维码</p>
+					</div>
+					<div class="messDiv">
+						<p id="R_Num"></p>
+						<p class="messFont">响应人数</p>
+					</div>
+					<div class="messDiv">
+						<p id="J_Num"></p>
+						<p class="messFont">参加人数</p>
+					</div>
+				</div>
+			</div>
+
+			<div id="main" class="clear">
+
+				<div id="actIntro">
+					<div id="actIntro_tit" class="titDiv divLeft">
+						<span class="titFont">活动详情</span>
+					</div>
+					<div id="actIntro_con" class="divLeft conDiv">
+					</div>
+				</div>
+
+				<div id="actTime">
+					<div id="actTime_tit" class="titDiv divLeft">
+						<span class="titFont">活动时间</span>
+					</div>
+					<div id="actTime_con" class=" divLeft conDiv">
+						<ul id="actTime_con_ul">
+						</ul>
+					</div>
+				</div>
+
+				<div id="actAddress">
+
+					<div id="actAddress_tit" class="titDiv divLeft">
+						<span class="titFont">
+							活动地点
+						</span>
+					</div>
+
+					<div id="actAddress_con" class="divLeft conDiv">
+						<ul id="actAddress_con_ul"></ul>
+					</div>
+				</div>
+			</div>
+
+			<div id="Contact">
+				<img src="image/个人中心1.png" style="width:50px;height:50px">
+				<span id="contact_con" class="con">发布人联系方式</span>
+				<span id="contact_phone"></span>
+			</div>
+
+			<div id="LeaMess">
+				<p><img src="image/留言.png" style="width:50px;height:50px;"/><span class="con"> 留言<span></p>
+				<div id="LeaMess_div">
+					<ul id="LeaMess_ul"></ul>
+				</div>
+			</div>
+
+			<div id="sub_div">
+				<button id="sub" class="btn btn-primary"></button>
+			</div>
+		</div>
+		<div id="master" style="display:none">
+			<div id="name_div" >
+				<br/>
+				<p class="yourname">请输入您的名字：</p>
+				<p><input type="text" id="name_format"></p>
+				<button id="submit" class="btn btn-primary">确认提交</button>
+				<br/>
+				<br/>
+				<button id="close" class="btn btn-primary">关闭</button>
+			</div>
+		</div>
+		<!--显示二维码-->
+		<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-sm">
+		    <div id="QR_img" class="modal-content">
+		    </div>
+		  </div>
+		</div>
+		<script type="text/javascript" src="js/myjs.js"></script>
+	</body>
+</html>

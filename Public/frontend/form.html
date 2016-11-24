@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+		<link rel="styleSheet" href="bootstrap/bootstrap.min.css"/>
+		<link rel="styleSheet" href="bootstrap/bootstrap-theme.min.css"/>
+		<link rel="styleSheet" href="css/resest.css"/>
+		<style>
+			#thebody{
+				text-align: center;
+				font-family: "微软雅黑";
+				font-weight: bold;
+			}
+			#userImgSex,#userNamePhone,#btnDiv{
+				margin-bottom: 20px;
+			}
+			#imgs{
+				margin-top: 50px;
+				width: 200px;
+				height: 220px;
+				border: 1px solid black;
+			}
+			input[type="text"]{
+				width: 260px;
+			}
+			#tips{
+				height: 200px;
+				text-align: center;
+				line-height: 200px;
+				font-family: "微软雅黑";
+				font-weight: bold;
+				font-size: 30px;
+			}
+		</style>
+		<script type="text/javascript" src="bootstrap/jquery-1.12.2.min.js"></script>
+		<script type="text/javascript" src="bootstrap/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/myTool.js"></script>
+		<script type="text/javascript" src="js/urlModel.js"></script>
+		<script type="text/javascript" src="js/cookies.js"></script>
+	</head>
+	<body>
+		<div id="thebody">
+			<form id="form_data" name="form_data" action="http://119.29.77.37/Fungrouping/home/team/joinTeamNotuser" method="POST">
+			<input id="team_id" type="text" name="team_id" style="display:none"/>
+			<div id="userImgSex">
+				<img  id="imgs" src="image/个人中心1.png"/>
+				<br/>
+				<br/>
+				<input type="button" id="fileBtn" class="btn btn-primary" value="请点击选择图片">
+				<input type="file" id="filePath" name="head_path" style="display:none">
+				<br/>
+				<br/>
+				男<input type="radio" name="sex" value="f" checked>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				女<input type="radio" name="sex" value="m">
+			</div>
+			<div id="userNamePhone">
+				您的电话:<br/>
+				<input name="phone" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" type="text" id="phone">
+				<br/>
+				<br/>
+				您的称呼:<br/>
+				<input type="text" name="username" id="username">
+			</div>
+			</form>
+			<div id="btnDiv">
+				<button id="btn" class="btn btn-success">确认提交申请</button>
+			</div>
+		</div>
+		<button type="button" id="tipsBtn" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" style="display:none">tips</button>
+
+		<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-sm">
+		    <div class="modal-content" id="tips">
+		      申请成功
+		    </div>
+		  </div>
+		</div>
+		<script type="text/javascript">
+			$("#team_id").val(getCookie("team_id"));
+			$("#filePath").change(function(){
+				var $file = $(this);
+				var fileObj = $file[0];
+				var windowURL = window.URL || window.webkitURL;
+				var dataURL;
+				var $img = $("#imgs");
+
+				if(fileObj && fileObj.files && fileObj.files[0]){
+					dataURL = windowURL.createObjectURL(fileObj.files[0]);
+					$img.attr('src',dataURL);
+				}else{
+					dataURL = $file.val();
+					var imgObj = document.getElementById("imgs");
+					imgObj.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+					imgObj.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = dataURL;
+				}
+			});
+			$("#fileBtn").click(function(){
+				$("#filePath").click();
+			})
+			$("#btn").click(function(){
+				var formdata=new FormData($("#form_data")[0]);
+				$.ajax({
+					url:base_url_joinTeamNotuser,
+					type:"POST",
+					data:formdata,
+					xhrFields:{
+						withCredentials:true
+					},
+					processData: false,
+  					contentType: false,
+					success:function(data){
+						if(data.code==20000){
+							$("#tipsBtn").click();
+							setTimeout(function(){
+								window.location.href="index2.html?team_id="+getCookie("team_id")
+							},2000);
+						}
+					}
+				})
+			})
+		</script>
+	</body>
+</html>

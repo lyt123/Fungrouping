@@ -1,0 +1,142 @@
+@charset "utf-8";
+html{
+	height:100%;
+}
+body{
+	height:100%;
+}
+ul{
+	margin:0;
+	padding:0;
+}
+/*头部*/
+#message{
+	text-align:center;
+	background:#5bd999;
+}
+#R_Num,#J_Num{
+	color:white;
+	font-size:3em;
+}
+/*二维码*/
+#QR img{
+	width:3em;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+#QR_img{
+	text-align:center;
+}
+/*顶部的类*/
+.messDiv{
+	float:left;
+	width:33%;
+}
+.messFont{
+	color:white;
+	font-family:"微软雅黑";
+}
+/*主体*/
+#main{
+	text-align:center;
+}
+#actIntro_con{
+	min-height:180px;
+	background:#E5E6E5;
+}
+#actTime_con,#actAddress_con,#actIntro_con{
+	width:90%;
+}
+#actTime,#actAddress,#actIntro{
+	margin-top:1em;
+	overflow:hidden;
+}
+.divLeft{
+	float:left;
+}
+.titDiv{
+	background:#4cc4df;
+	width:10%;
+	height:180px;
+}
+.titFont{
+	color:white;
+	line-height:45px;
+	font-size:2em;
+}
+.conDiv{
+	color:#858383;
+}
+.ul_li{
+	background:#E5E6E5;
+	width:100%;
+	height:180px;
+	line-height:180px;
+}
+.ul_li_top{
+	margin-top:6px;
+}
+.btns{
+	width:10px;
+	height:10px;
+}
+/*文字颜色*/
+.con{
+	color:#87D7E9 ;
+}
+/*举办者的联系方式*/
+#Contact{
+		clear: left;
+		margin-top: 10px;
+		width: 100%;
+		border-top: 2px solid #87D7E9;
+		border-bottom: 2px solid #87D7E9;
+}
+/*留言*/
+.imgs{
+	width:4em;
+	height:4em;
+	border-radius:50%;
+	overflow:hidden;
+}
+#LeaMess{
+	margin-top:10px;
+	width: 100%;
+	border-top: 2px solid #87D7E9;
+	border-bottom: 2px solid #87D7E9;
+}
+#LeaMess_div{
+	margin-top: 20px;
+	margin-bottom: 10px;
+	margin-left: 15px;
+}
+.LeaMessLi{
+	margin-bottom:15px;
+	border-bottom: 1px solid #87D7E9;
+}
+/*提交按钮*/
+#sub_div{
+	text-align:center;
+}
+#submit,#sub{
+	margin-top:10px;
+	margin-bottom:5px;
+}
+#master{
+	width:100%;
+	background:rgba(0,0,0,0.8);
+	position:fixed;
+	top:0;
+}
+#name_div{
+	text-align:center;
+	width:300px;
+	min-height:200px;
+	background:white;
+	margin:50px auto;
+}
+#name_div p.yourname{
+	margin-top:10px;
+	font-family:"微软雅黑";
+	font-weight:bold;
+}
